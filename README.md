@@ -5,7 +5,7 @@
 
 ```python
 
-server = Server(host="", port=9999, adm_login="admin", adm_password="1111")
+server = TMServer(host="", port=9999, adm_login="admin", adm_password="1111")
 server.start()
 
 ```
@@ -60,15 +60,15 @@ This command will work only if client become an admin. To do this, use server co
 <h3> Other Server methods: </h3>
 
 ```python
-server.get_client(cleint_id) # returns client class (or -1 if client not found).
-server.get_client_room(client) # returns client's room_id (or None if he don't have a room).
-server.get_all_rooms() # returns list of tuples that contains id and room name. Example: [(0, "test"), (1, "friends")].
-server.get_all_clients() # returns list of tuples that contains id and client class. Example: [(0, class), (1, class)].
-server.move_client(client, room_id) # transfer client to the room
-server.create_room(room_name) # creates new room (returns room id)
-server.delete_room(room_id) # delete room
-server.get_room(room_id) # returns room class
-server.add_command(command_name, target, admin_command) # creates new command
+TMServer.get_client(cleint_id) # returns client class (or -1 if client not found).
+TMServer.get_client_room(client) # returns client's room_id (or None if he don't have a room).
+TMServer.get_all_rooms() # returns list of tuples that contains id and room name. Example: [(0, "test"), (1, "friends")].
+TMServer.get_all_clients() # returns list of tuples that contains id and client class. Example: [(0, class), (1, class)].
+TMServer.move_client(client, room_id) # transfer client to the room
+TMServer.create_room(room_name) # creates new room (returns room id)
+TMServer.delete_room(room_id) # delete room
+TMServer.get_room(room_id) # returns room class
+TMServer.add_command(command_name, target, admin_command) # creates new command
 
 ```
 
