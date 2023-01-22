@@ -7,6 +7,11 @@ class InvalidRoom(Exception):
         self.message = message
         super().__init__(self.message)
 
+class InvalidClient(Exception):
+    def __init__(self, message="You are trying to use client, that does not exist!"):
+        self.message = message
+        super().__init__(self.message)
+
 
 class Client:
     def __init__(self, conn, address, user_id) -> None:
@@ -35,6 +40,7 @@ class Room:
     def remove_user(self, user_id):
         for ind, user in enumerate(self.members):
             if user.user_id == user_id:
+                user.room_id = -1
                 del self.members[ind]
                 break
 
@@ -61,6 +67,17 @@ class Server:
     def get_all_rooms(self):
         answer = [(id, room.name) for id, room in enumerate(self.rooms) if room != -1]
         return answer
+    
+    def get_all_clients(self):
+        answer = [(id, client) for id, client in enumerate(self.clients)]
+        return answer
+
+    def get_client(self, client_id):
+        try:
+            client = [client for client in self.clients if client.user_id == client_id][0]
+            return client
+        except IndexError:
+            return -1
     
     def move_client(self, client, room_id):
         if len(self.rooms) > room_id and room_id >= 0 and self.rooms[room_id] != -1:
