@@ -1,4 +1,4 @@
-from server import Server
+from TMserver import TMServer
 
 def echo_command(args, client):
     message = " ".join(args)
@@ -33,7 +33,7 @@ def room_messgae(args, client):
         return "[Error] You don't have a room!"
 
 
-server = Server(host="", port=9999, adm_login="admin", adm_password="1111")
+server = TMServer(host="", port=9999, adm_login="admin", adm_password="1111")
 server.add_command("echo", echo_command)
 server.add_command("amiadmin", admin_command_example, admin_command=True)
 server.add_command("moveme", move_me)

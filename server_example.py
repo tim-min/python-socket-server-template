@@ -1,4 +1,4 @@
-from server import Server
+from TMserver import TMServer
 
 def echo_command(args, client):
     message = " ".join(args)
@@ -32,11 +32,20 @@ def room_messgae(args, client):
     else:
         return "[Error] You don't have a room!"
 
+def leave_room(args, client):
+    global server
+    if client.room_id != -1:
+        room = server.get_room(client.room_id)
+        room.remove_user(client.user_id)
+        return 1
+    return "[Error] You don't have a room!"
 
-server = Server(host="", port=9999, adm_login="admin", adm_password="1111")
+
+server = TMServer(host="", port=9999, adm_login="admin", adm_password="1111")
 server.add_command("echo", echo_command)
 server.add_command("amiadmin", admin_command_example, admin_command=True)
 server.add_command("moveme", move_me)
 server.add_command("create_room", create_room)
 server.add_command("rm", room_messgae)
+server.add_command("leave", leave_room)
 server.start()

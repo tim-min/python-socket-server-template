@@ -45,7 +45,7 @@ class Room:
                 break
 
 
-class Server:
+class TMServer:
     def __init__(self, host, port, adm_password, adm_login) -> None:
         self.host, self.port = host, port
         self.sock = socket.socket()
