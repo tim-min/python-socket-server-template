@@ -1,0 +1,11 @@
+{
+    "TMfirewall": {
+        "enabled": true,
+        "xss_blacklist": [],
+        "xss_check_commands": [],
+        "sql_blacklist": [],
+        "sql_check_commands": [],
+        "banned_clients": [],
+        "max_messages_ps": 2
+    }
+}
