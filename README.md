@@ -9,7 +9,27 @@ server = TMServer(host="", port=9999, adm_login="admin", adm_password="1111")
 server.start()
 
 ```
-<li>adm_login and adm_password are requiered for access to admin commands</li>
+<li>adm_login and adm_password are requiered for access to admin commands</li><br>
+
+<h3> Creating config.json file </h3>
+
+```json
+{
+    "TMfirewall": {
+        "enabled": true,
+        "xss_blacklist": [],
+        "xss_check_commands": [],
+        "sql_blacklist": [],
+        "sql_check_commands": [],
+        "banned_clients": [],
+        "max_messages_ps": 2
+    }
+}
+
+```
+
+<li>Here you should configure firewall. Firstly add dangerous keywords to blacklists "xss_blacklist" and "sql_blacklist". Then add command names to lists "xss_check_commands" and "sql_check_commands". Firewall will check only commands, that you wrote there! You can ban client, just write his address to "banned_clients". You can limit the number of messages per second, just change "max_messages_ps". You can also turn off firewall ("enabled": false).</li>
+
 
 <h3> Creating command </h3>
 
