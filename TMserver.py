@@ -77,21 +77,19 @@ class TMFirewall:
             return 0
 
         time_now = int(time.time())
-        print(time_now, client.last_message_secs, client.messages_per_sec_counter)
 
         if client.last_message_secs is None:
             client.last_message_secs = time_now
             return 1
         else:
-            if time_now - client.last_message_secs <= 1:
+            if time_now <= client.last_message_secs + 1:
                 client.messages_per_sec_counter += 1
 
                 if client.messages_per_sec_counter > self.settings["max_messages_ps"]:
                     return 0
             else:
                 client.messages_per_sec_counter = 0
-        
-        client.last_message_secs = time_now
+                client.last_message_secs = time_now
 
         return 1
 

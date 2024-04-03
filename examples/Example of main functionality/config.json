@@ -6,11 +6,6 @@
         "sql_blacklist": [],
         "sql_check_commands": [],
         "banned_clients": [],
-        "max_messages_ps": 100
-    },
-
-    "Main": {
-        "admin_login": "admin",
-        "admin_password": "eGftd34_74"
+        "max_messages_ps": 10
     }
 }
