@@ -310,7 +310,7 @@ class TMServer:
                 elif success != 2 and success: # 2 for emty message, 1 for success, other is error message
                     client.send_message(success)
 
-            except (ConnectionResetError, SecurityError, IndexError): # if client disconnected, delete him)
+            except (ConnectionResetError, SecurityError, IndexError, rsa.DecryptionError): # if client disconnected, delete him)
                 client_index = self.clients.index(client)
                 print(f"[CLIENT DISCONNECTED] id - {client.user_id}")
                 self.logger.user_disconnected(client)

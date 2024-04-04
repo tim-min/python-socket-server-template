@@ -41,7 +41,7 @@ def leave_room(args, client): # Работа с комнатами, удален
     return "[Error] You don't have a room!"
 
 
-server = TMServer(host="", port=8001, adm_login="admin", adm_password="1111", log_file_path="ServerLog.txt") # инициализируем TMserver  на локальном хосте с портом 8080
+server = TMServer(host="", port=8001, adm_login="admin", adm_password="1111", log_file_path="ServerLog.txt") # инициализируем TMserver  на локальном хосте с портом 8001
 
 # Далее добавляем наши комианды:
 server.add_command("echo", echo_command, admin_command=False)
